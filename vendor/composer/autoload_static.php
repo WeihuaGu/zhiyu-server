@@ -12,6 +12,10 @@ class ComposerStaticInit7d94bda6e4995fde64833a5ffa344734
     );
 
     public static $prefixLengthsPsr4 = array (
+        'm' => 
+        array (
+            'model\\' => 6,
+        ),
         'M' => 
         array (
             'Medoo\\' => 6,
@@ -19,6 +23,10 @@ class ComposerStaticInit7d94bda6e4995fde64833a5ffa344734
     );
 
     public static $prefixDirsPsr4 = array (
+        'model\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/model',
+        ),
         'Medoo\\' => 
         array (
             0 => __DIR__ . '/..' . '/catfan/medoo/src',

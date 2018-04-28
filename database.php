@@ -3,10 +3,48 @@
     require 'vendor/autoload.php';
     // Using Medoo namespace
     use Medoo\Medoo; 
-     
-    // 初始化配置
-    $database = new medoo(require 'databaseconf.php'
+    class MedooDatabase{
+
+    private static $instance; 
+    private static $database;
+	
+    public static function getInstance()  
+    {  
+        if (!(self::$instance instanceof self))  
+        {  
+            self::$instance = new self();  
+        }  
+        return self::$instance;  
+    }  
+    private function __construct()  
+    {  
+    }  
+      
+    /** 
+     * Description:私有化克隆函数，防止外界克隆对象 
+     */  
+    private function __clone()  
+    {  
+    }  
+
+    public function getMedoo(){
+	 // 初始化配置
+    if(empty(self::$database))
+    self::$database = new medoo(require 'databaseconf.php'
     );
      
-    return $database;
+    return self::$database;
+
+
+    }
+    
+
+
+
+
+
+
+
+   }
+   
 

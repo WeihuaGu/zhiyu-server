@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL^E_NOTICE);
 
 if($_ENV['MYSQL_DBNAME']!=null){
  

@@ -1,12 +1,12 @@
 <?php
 require 'vendor/autoload.php';
 
-$database=require 'database.php';
-Flight::set('database', $database);
+//$database=require 'database.php';
+//Flight::set('database', $database);
 
 
 Flight::route('/', function(){
-    echo '你好，志趣';
+    echo '你好，志遇';
 });
 
 //数据库相关路由

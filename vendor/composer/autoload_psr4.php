@@ -6,5 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'model\\' => array($baseDir . '/model'),
     'Medoo\\' => array($vendorDir . '/catfan/medoo/src'),
 );
