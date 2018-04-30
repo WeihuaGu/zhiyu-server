@@ -10,6 +10,10 @@ Flight::route('/', function(){
 });
 
 //数据库相关路由
-require 'routedatabase.php';
+require './route/routedatabase.php';
+
+//认证与用户
+require './route/routeauth.php';
+require './route/routeuser.php';
 
 Flight::start();

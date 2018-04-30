@@ -6,7 +6,11 @@ require_once 'vendor/autoload.php';
 $user=new User();
 print_r($user->verifyUser("weihuagu","1992"));
 **/
+use model\Token;
 use model\Authentication;
-
 $auth=new Authentication();
-echo $auth->authentication("weihuagu","1993");
+$jwt=$auth->authentication("weihuagu","1992");
+echo $jwt;
+echo "\n";
+$To=new Token();
+print_r($To->getTokenClaims($jwt));
