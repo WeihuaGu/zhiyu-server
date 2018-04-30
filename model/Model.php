@@ -6,6 +6,14 @@ class Model{
 
 protected $database;
 
+protected $tablename;
+
+public function setTablename($tablename){
+$this->tablename=$tablename;
+
+
+}
+
 public function __construct(){
 	$medoo=\MedooDatabase::getInstance();
 	$this->database=$medoo->getMedoo();

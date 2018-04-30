@@ -8,4 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'model\\' => array($baseDir . '/model'),
     'Medoo\\' => array($vendorDir . '/catfan/medoo/src'),
+    'Lcobucci\\JWT\\' => array($vendorDir . '/lcobucci/jwt/src'),
 );
