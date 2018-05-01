@@ -7,22 +7,18 @@ public function __construct(){
 }
 
 
-public function addPublishItem($publisher,$infocate,$actiontime,$detail){
+public function addPublishItem($publisher,$infocate,$site,$actiontime,$detail){
 echo "start to insert item to PublishItem";
-echo "publisheris".$publisher;
-echo "infocate".$infocate;
-echo "actiontime".$actiontime;
-echo "detail".$detail;
 
 $last_item_id = $this->database->insert($this->tablename, [
-
+"id"=>md5(uniqid()),
 "publisher"=>$publisher,
 "infocate"=>$infocate,
+"site"=>$site,
 "actiontime"=>$actiontime,
 "detail"=>$detail 
     ]);
 
-echo $last_item_id->rowCount();
 return $last_item_id;
 
 
@@ -33,7 +29,6 @@ return $last_item_id;
 public function getPublish(){
 
 $publishs=$this->database->select($this->tablename,"*");
-print_r($publishs);
 return $publishs;
 
 

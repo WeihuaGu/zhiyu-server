@@ -9,24 +9,39 @@ public function __construct(){
 
 
 
-public function addUser($account,$pwd){
+public function addUser($account,$pwd,$gender="",$age=0){
 
-
-
+$user=$this->database->select($this->tablename,"*",[ "account"=>$account]);
+if(!$this->verifyAccountnameExist($account)){
 $last_user_id = $this->database->insert($this->tablename, [
+	"id"=> md5(uniqid()),
         "account" => $account,
-        "pwd" => $pwd
+        "pwd" => $pwd,
+	"gender" => $gender,
+	"age" => $age
     ]);
-print_r($last_user_id);
+return  $this->verifyUser($account,$pwd);
+}else
+return null;
 
 }
 
-public function delUser(){
+public function delUser($userid){
+    $this->database->delete($this->tablename, [
+        "AND" => [
+            "id" => $userid
+        ]
+    ]);
 
 
 }
 
-public function updateUser(){
+public function updateUser($colname,$uid,$update){
+    $this->database->update($this->tablename, [
+        $colname => $update ], [
+        "id" => $uid
+    ]);
+
 
 }
 
@@ -36,7 +51,12 @@ $user=$this->database->select($this->tablename,"*",[ "id"=>$userid ]);
 return $user;
 
 }
+public function verifyAccountnameExist($account){
+$user=$this->database->select($this->tablename,"*",[ "account"=>$account]);
+return !empty($user);
 
+
+}
 public function verifyUser($account,$pwd){
 $user=$this->database->select($this->tablename,"*",[ "account"=>$account,"pwd"=>$pwd ]);
 if(empty($user))
