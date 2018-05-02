@@ -2,7 +2,7 @@
 namespace model;
 class Publish{
 
-public function publishItem($publisher,$infocate,$actiontime,$detail){
+public function publishItem($publisher,$infocate,$site,$actiontime,$detail){
 if(!$this->validUser($publisher)){
 echo "user not exits";
 return null;
@@ -12,16 +12,14 @@ echo "cate not exits";
 return null;
 }
 $item=new PublishItem();
-$publieditem=$item->addPublishItem($publisher,$infocate,$actiontime,$detail);
+$publieditem=$item->addPublishItem($publisher,$infocate,$site,$actiontime,$detail);
 print_r($publishitem);
 return $publishitem;
 
 }
 
 public function getPublishs(){
-$publishs=new PublishItem();
-$publishs->getPublish();
-
+return (new PublishItem())->getPublish();
 
 }
 

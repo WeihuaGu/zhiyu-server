@@ -6,13 +6,21 @@ class Category extends Model{
 private $category;
 public function __construct(){
    parent::__construct();
-   $this->importCategory();
    $this->setTablename("publish_category"); 
+   $this->importCategory();
+  
 }
 
 
 public function importCategory(){
  $this->category=require_once dirname(dirname(__FILE__)).'/categoryconfig.php';
+
+
+ foreach ($this->category as $key=>$value){
+	$category=$this->database->select($this->tablename,"*",[ "id"=> $key ]);
+	if(empty($category))
+$this->database->insert($this->tablename,['id'=>$key,'category'=>$value ]);
+}
 
 
 }
