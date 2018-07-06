@@ -15,19 +15,21 @@ $this->tablename=$tablename;
 }
 
 public function __construct(){
+    try{
 	$medoo=\MedooDatabase::getInstance();
 	$this->database=$medoo->getMedoo();
+	}
+
+    catch(Exception $e){
+ 	echo 'Message: ' .$e->getMessage();
+	Flight::halt(500, 'get database faild');
+        }
     
 }
+
 public function databaseInfo(){
-echo 'model info:';
-
 $info=$this->database->info();
-foreach($info as $item){
-echo $item;
-echo '</br>';
-}
-
+return $info;
 }
 
 

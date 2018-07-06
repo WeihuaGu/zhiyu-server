@@ -4,12 +4,11 @@ use model\Token;
 use model\User;
 
 
-
+Flight::route('GET /users','listuser');
 function listuser(){
 
 }
 
-Flight::route('GET /users','listuser');
 
 Flight::route('POST /user/me/', function(){
 $body = Flight::request()->getBody();

@@ -13,7 +13,7 @@ public function __construct(){
 
 
 public function importCategory(){
- $this->category=require_once dirname(dirname(__FILE__)).'/categoryconfig.php';
+ $this->category=require_once dirname(dirname(__FILE__)).'/config/categoryconfig.php';
 
 
  foreach ($this->category as $key=>$value){
