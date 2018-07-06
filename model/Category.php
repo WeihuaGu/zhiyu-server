@@ -1,44 +1,45 @@
 <?php 
-
 namespace model;
-class Category extends Model{ 
 
-private $category;
+class Category{ 
+private static $instance; 
+private static $category;
 public function __construct(){
-   parent::__construct();
-   $this->setTablename("publish_category"); 
    $this->importCategory();
   
 }
 
+public static function getInstance()  
+    {  
+        if (!(self::$instance instanceof self))  
+        {  
+            self::$instance = new self();  
+        }  
+        return self::$instance;  
+    }  
 
 public function importCategory(){
- $this->category=require_once dirname(dirname(__FILE__)).'/config/categoryconfig.php';
 
-
- foreach ($this->category as $key=>$value){
-	$category=$this->database->select($this->tablename,"*",[ "id"=> $key ]);
-	if(empty($category))
-$this->database->insert($this->tablename,['id'=>$key,'category'=>$value ]);
-}
-
+ if(empty(self::$category))
+    self::$category = require_once dirname(dirname(__FILE__)).'/config/categoryconfig.php';
+    return self::$category;
 
 }
 
 public function getCategory($categoryid){
 
-return $this->category[$categoryid];
+return self::$category[$categoryid];
 
 }
 
 public function getAllCategory(){
-return $this->category;
+return self::$category;
 
 }
 
 public function isCategoryById($categoryid){
 
-return array_key_exists($categoryid,$this->category);
+return array_key_exists($categoryid,self::$category);
 }
 
 

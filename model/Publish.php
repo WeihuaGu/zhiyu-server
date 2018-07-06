@@ -1,8 +1,16 @@
 <?php
 namespace model;
+
 class Publish{
 
-public function publishItem($publisher,$infocate,$site,$actiontime,$detail){
+public function anonymityPublish($infocate,$detail,$site="",$actiontime=""){
+$item=new PublishItem();
+$publieditem=$item->addPublishItem($infocate,$detail,$site,$actiontime);
+return $publieditem;
+}
+
+
+public function publishItem($infocate,$detail,$site,$actiontime,$publisher){
 if(!$this->validUser($publisher)){
 echo "user not exits";
 return null;
@@ -12,7 +20,7 @@ echo "cate not exits";
 return null;
 }
 $item=new PublishItem();
-$publieditem=$item->addPublishItem($publisher,$infocate,$site,$actiontime,$detail);
+$publieditem=$item->addPublishItem($infocate,$detail,$site,$actiontime,$publisher);
 print_r($publishitem);
 return $publishitem;
 

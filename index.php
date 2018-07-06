@@ -5,6 +5,7 @@ Flight::route('/', function(){
     echo '你好，志遇';
 });
 
+
 //配置Flight必要变量
 Flight::set('httpcode', require './config/httpcode.php');
 
